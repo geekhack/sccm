@@ -821,13 +821,6 @@ function calculateMetric()
         
         }
         
-
-
-        /*console.log("Total public variables occurrence= "+ytt.length);//+pttlarray.length);
-        console.log("Total private variables occurrence= "+gh.length);//+pttlarray.length);
-        console.log("Total public method calls occurrences= "+pttlarray.length);//+pttlarray.length);
-        console.log("Total private method calls occurrences= "+prttlarray.length);//+pttlarray.length);
-         */
         console.log("Total public occurrence(PO)= "+ptotals);//+pttlarray.length);
 
         console.log("Total private occurrence(PRO)= "+prtotals);        
@@ -957,14 +950,12 @@ function calculateMetric()
           prttlarray.length=1;
         }
 
-       /*console.log("*******************local variables in the class******************");
-                   console.log("Local Variables ="+totallocalvariables1.length+totallocalvariables.length);*/
-
+     
       console.log("LA usage: "+usagelocals.length+usagelocals1.length);
 
       var COH1=(totaloccurences)/(totalattributes*totalmethods);
             console.log(COH1);
 
-      //filter local totals
+    
                           
 }

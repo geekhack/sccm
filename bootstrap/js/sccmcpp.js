@@ -381,9 +381,6 @@ function calculateMetric()
   var totalprivateoccurrence=new Array();
   var ytt=new Array();
   var gh=new Array();
-
-  //var pubmethodcontent=fctns.match(/(public)\s+(\w+)\s+(\w+)(\()((\w*)(\s+)(\w*)(\,)?)*(\))(\{)(\w*)(.+?)(\})+/g); //best regex method so far
-  //forme pubmethodcontent  xdfff=fctns.match(/(\w+)\s+(\w+)(\()(((\s+)(\w+)?(\,)?)*|((\w+)((\,)?)*))(\))(\{)(\w*)(.+?)(\})+/g); //best regex method so far
   var pubmethodcontent=fctns.match(/((\w+)(\:\:)(\w+)(\()(((\w*)(\s+)(\w+)?(\,)?)*|((\w)(\w+)((\,)?)*))(\))(\{)(\w*)(.+?)(\}))|((\w+)(\()(((\w*)(\s+)(\w+)?(\,)?)*|((\w)(\w+)((\,)?)*))(\))(\{)(\w*)(.+?)(\}))+/g);
   var w_1=0;
   var w_2=0;

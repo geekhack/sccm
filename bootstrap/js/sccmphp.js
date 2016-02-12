@@ -603,9 +603,7 @@ function calculateMetric()
 
              }               
           });
-
-          
-          
+ 
           
 
       //loop through the private methods
@@ -751,12 +749,6 @@ function calculateMetric()
 
 
     }
-
-            /*console.log(arraydifference); //public 1
-            console.log(arraydifference2); //public 2
-            console.log(arraydifference3); //private 1
-            console.log(arraydifference4); //private 2
-            */
             //check the difference betwen the four results
             var publics=[];
             var privates=[];
@@ -886,20 +878,7 @@ function calculateMetric()
 
         
         }
-        
-
-        //check the interaction with public attributes
-
-        /* globaltotals.forEach(function(lov){
-          filterlocaltotals.forEach(function(lov1){         
-          var f1=(lov*lov1)|(lov/lov1)|(lov*lov1))
-          var interactPublics=fctns.match(new RegExp());
-
-          });
-        });*/
-               
-
-        
+           
         ////////////////////////----------------------------/////////////////////////////////
         //calculating the values of COH
        var totaloccurences=ytt.length+gh.length;
@@ -997,10 +976,8 @@ function calculateMetric()
           }
          
         }  
-       console.log("*****************************************");        
+        console.log("*****************************************");        
 
-        //console.log("PA="+finalpublic.length);
-        //console.log("PRA="+finalprivate.length);
         console.log("PO= "+ptotals);//+pttlarray.length);
 
         console.log("PRO= "+prtotals);        
@@ -1031,12 +1008,6 @@ function calculateMetric()
 
       var COH1=(totaloccurences)/(totalattributes*totalmethods);
             console.log(COH1);
-
-      //filter local totals
-
-
-
-
 
                           
 }
