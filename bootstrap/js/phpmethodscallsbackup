@@ -1,0 +1,110 @@
+ 
+ /*  
+  
+   
+  
+  
+
+  var xio=fctns.match(/((\w+)(\()(\))(\;))|((\.)?(\w+)(\()(\s+(\w+))?(\,)?(\s+(\w+))*?(\)))|((\-\>)(\w+)(\()(\)))+/g);
+  //remove keywords from the list
+  var xio1=xio.toString();
+  var xio2=xio1.replace(/array|debug|_destruct|_construct|\(|\)|\;|\->|\s+/g,"");
+  //convert the string back to an array
+  var fuiy=xio2.split(",");
+  //remove any empty item
+
+  var wq=0;
+  var pl=0; 
+  //check availability of method calls
+  if(typeof(mthdcall) === 'undefined' || mthdcall == null)
+    {
+      PI.length=0;
+      PRI.length=0;
+      console.log(PI.length+PRI.length+" method calls found");
+    }
+    else if(typeof(mthdcall) !== 'undefined' || mthdcall != null) 
+    {
+            //get the actual name of the method via splicing it
+              var mthcalls=new Array();  
+              //iterate through the items to get the variable name
+              for (cl = 0; cl<mthdcall.length; ++cl)
+               {
+                var call=mthdcall[cl];    
+                var x=call.replace(/(\()((\w+)?)(\))+/,"");
+                var splicedcall=x.replace(/(\=)(\.)/,"");
+                mthcalls.push(splicedcall);
+               }               
+    ////////////////////////////////////////////////appearance of a method call within any given method (private|public)////////////////////////////////////////////////////////////////////
+            if(typeof(totalpublicmethods) === 'undefined' || totalpublicmethods == null) 
+            {
+                 PI.length=0;
+                 PRI.length=0;
+            }
+            else if(typeof(totalpublicmethods) !== 'undefined' || totalpublicmethods != null) 
+            { 
+                    var hu=0;
+                    for(t=0;t<pubmthd.length;++t)
+                    {
+                        for(lq=0;lq<mthcalls.length;++lq)
+                          {    
+                               
+                              var ky=String(pubmthd[t]).match(new RegExp(mthcalls[lq],"g"));
+                                                                                  
+                              if(typeof(ky) === 'undefined' || ky == null) 
+                                  {
+                                       PI.length=hu;                                       
+                                  }
+                               else if(typeof(ky) !== 'undefined' || ky != null)
+                                 {
+                                      hu+=ky.length;                                     
+                                 }                                                                                                      
+                          }                             
+                    }
+                    if(mthcalls.length>hu)
+                    {
+                      PI.length=0;
+                      totalpublicoccurrence.length+=PI.length;
+                    } 
+                    else if(hu>mthcalls.length)
+                    {
+                     wq+=hu-mthcalls.length;
+                     PI.length=wq;
+                     totalpublicoccurrence.length+=PI.length;
+                    }                   
+                                        
+            } 
+            else if(typeof(totalprivatemethods)!=='undefined' || totalprivatemethods !=null)
+            {
+               
+                    var hi=0;
+                    for(t1=0;t1<prmthd.length;++t1)
+                    {
+                       for(lq1=0;lq1<mthcalls.length;++lq1)
+                          {    
+                            
+                               var ky1=String(prmthd[t1]).match(new RegExp(mthcalls[lq1],"g"));
+                               if(typeof(ky1) === 'undefined' || ky1 == null) 
+                                  {
+                                       PRI.length=hi;                                      
+                                  }
+                               else if(typeof(ky1) !== 'undefined' || ky1 != null)
+                                 {
+                                   hi+=ky1.length;                                   
+                                 }                                          
+                          }           
+                    }
+                    if(mthcalls.length>hi)
+                    {
+                      PRI.length=0;
+                      totalprivateoccurrence.length+=PRI.length;
+                    } 
+                    else if(hi>mthcalls.length)
+                    {
+                     pl+=hi-mthcalls.length;
+                     PRI.length=pl;
+                     totalprivateoccurrence.length+=PRI.length;
+                    }      
+
+            }
+      }
+      */

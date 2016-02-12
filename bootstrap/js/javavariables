@@ -1,0 +1,132 @@
+
+  if(pxe!=null)
+  {
+     var pxae=pxe.toString();
+     var prvariable3=pxae.match(/((\w+)((\,)(?!int|byte|short|long|float|double|char|String|boolean)(\w+))+)((\,)?)+/g).toString().split(",");
+      if(pubvariable==null && pubvariable2==null &&pubvariable3!=null)
+      {
+        totalpublicvariables=pubvariable2;
+        PA.length=totalpublicvariables.length;
+        console.log("PA= "+PA.length); 
+      }
+      else if(pubvariable!=null && pubvariable2==null &&pubvariable3!=null)
+      {
+        totalpublicvariables=pubvariable.concat(pubvariable3);
+        PA.length=totalpublicvariables.length;
+        console.log("PA= "+PA.length); 
+      }
+      else if(pubvariable==null && pubvariable2!=null &&pubvariable3!=null)
+      {
+        totalpublicvariables=pubvariable2.concat(pubvariable3);
+        PA.length=totalpublicvariables.length;
+        console.log("PA= "+PA.length); 
+      }
+      else if(pubvariable!=null &&pubvariable!=null &&pubvariable3!=null)
+      {  
+         var fs=pubvariable.concat(pubvariable2);
+         totalpublicvariables=fs.concat(pubvariable3);
+
+         PA.length=totalpublicvariables.length;
+         console.log("PA= "+PA.length); 
+      }
+
+  }
+  else if(pxe==null)
+  {
+     if(pubvariable==null &&pubvariable2==null)
+      {
+        totalpublicvariables=0;
+        PA.length=totalpublicvariables;
+        console.log("PA= "+PA.length);
+
+      }
+      else if(pubvariable!=null && pubvariable2==null)
+      {
+          totalpublicvariables=pubvariable;
+          PA.length=totalpublicvariables.length;
+          console.log("PA= "+PA.length);
+      }
+      else if(pubvariable==null && pubvariable2!=null)
+      {
+        totalpublicvariables=pubvariable2;
+        PA.length=totalpublicvariables.length;
+        console.log("PA= "+PA.length); 
+      }
+     
+      else if(pubvariable!=null && pubvariable2!=null)
+      {
+        totalpublicvariables=pubvariable2.concat(pubvariable);
+        PA.length=totalpublicvariables.length;
+        console.log("PA= "+PA.length); 
+      }
+
+  }
+
+
+  //privates
+
+  
+  if(px!=null)
+  {   var pxa=px.toString();
+      var prvariable3=pxa.match(/((\w+)((\,)(?!int|byte|short|long|float|double|char|String|boolean)(\w+))+)((\,)?)+/g).toString().split(",");
+  
+     if(prvariable==null && prvariable2==null &&prvariable3!=null)
+      {
+        totalprivatevariables=prvariable3;
+        PRA.length=totalprivatevariables.length;
+        console.log("PRA= "+PRA.length); 
+      }
+      else if(prvariable==null && prvariable2!=null &&prvariable3!==null)
+      {
+        totalprivatevariables=prvariable2.concat(prvariable3);
+        PRA.length=totalprivatevariables.length;
+        console.log("PRA= "+PRA.length); 
+      }
+      else if(prvariable!=null && prvariable2==null &&prvariable3!==null)
+      {
+        totalprivatevariables=prvariable.concat(prvariable3);
+        PRA.length=totalprivatevariables.length;
+        console.log("PRA= "+PRA.length); 
+      }
+      else if(prvariable!=null &&prvariable2!=null &&prvariable3!=null)
+      {  
+         var w=prvariable.concat(prvariable2);
+         totalprivatevariables=w.concat(prvariable3);
+         PRA.length=totalprivatevariables.length;
+         console.log("PRA= "+PRA.length); 
+
+      } 
+
+  }
+  else if(px==null)
+  {
+     if(prvariable==null &&prvariable2==null)
+      {
+        totalprivatevariables=0;
+        PRA.length=totalprivatevariables;
+        console.log("PRA= "+PRA.length);
+
+      }
+      else if(prvariable!=null && prvariable2==null)
+      {
+          totalprivatevariables=prvariable;
+          PRA.length=totalprivatevariables.length;
+          console.log("PRA= "+PRA.length);
+      }
+      else if(prvariable==null && prvariable2!=null)
+      {
+        totalprivatevariables=prvariable2;
+        PRA.length=totalprivatevariables.length;
+        console.log("PRA= "+PRA.length); 
+      }
+      
+      else if(prvariable!=null && prvariable2!=null)
+      {
+        totalprivatevariables=prvariable.concat(prvariable2);
+        PRA.length=totalprivatevariables.length;
+        console.log("PRA= "+PRA.length); 
+      }
+  
+
+  }
+  

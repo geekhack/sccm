@@ -1,0 +1,189 @@
+
+/* Copyright Lunarmedia */
+
+@import "generic.css";
+@import "forum_override.css";
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1em;
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+#bodyWrapper    
+{
+	border: 0 solid;
+	width: 664px !important;
+	visibility: visible;
+	margin: 0 auto; /*mozilla center twist */
+	text-align: left;
+	padding: 0;
+}
+#headWrapper    
+{
+	margin: 0px 0 0px 0;
+}
+
+h1 {
+	font: normal 120% arial, san-serif;
+	font-weight: normal;
+	margin-left: 0; 
+	margin-top: 0px;
+	color: #6699cc;
+}
+h2
+{
+	font: normal 120% arial, sans-serif;
+
+	margin: 26px 0px 8px 4px;
+	padding: 0px;
+	line-height: 1em;
+}
+h3
+{
+	font-size: 1em;
+	font-weight: normal;
+	margin: 14px 0px 4px 0px;
+	line-height: 1em;
+	color: #6699cc;
+
+}
+dl{
+	margin: 0px;
+}
+p {
+	margin: 6px 0 6px 0;
+	line-height: 1.5em;
+}
+p.space 
+{
+	margin: 3px 0 25px 0;
+	font-size: 0.8em;
+}
+
+b{
+	font-family:  Arial, Helvetica, sans-serif;
+	font-size: 1.2em;
+	font-weight: bolder;
+	
+	text-transform: lowercase;
+}
+
+small{
+	font-size: 0.6em;
+	text-transform: uppercase;
+}
+
+a{
+	text-decoration: none;
+}
+
+a:link {
+	color: #993300;
+}
+a:visited {
+	color: #993300;
+}
+a:hover {
+	color: #ff6600;
+}
+
+#logo
+{
+	width: 181px;
+	margin: 0 0 0 4px;
+	padding: 0 0 0 4px;
+}
+#logo h1
+{
+	background: transparent url("/images/logo.gif") no-repeat 0 0;
+	display: block;
+	height: 57px;
+	overflow: hidden;
+	line-height: 1000px;
+	outline: 0;
+	margin: 0;
+}
+
+#packer
+{
+	padding: 3px;
+	margin: 0px 0 62px 0;
+	border: 1px dashed #ccc;
+}
+
+.packerpage p
+{
+	font-size: 0.8em;
+}
+
+#controls
+{
+	padding: 6px;
+	margin: 0;
+	text-align: right;
+}
+
+#controls button
+{
+	margin: 4px;
+}
+#output, #input
+{
+	width: 640px;	
+}
+#footer    
+{
+	margin: 42px 0 0 0;
+	padding: 4px;
+}
+#lunarmediaNetwork
+{
+	border-top: 1px solid #ccc;
+	margin: 32px 0 12px 0;
+	padding: 6px;
+}
+
+#lunarmediaNetwork #network
+{
+}
+
+#lunarmediaNetwork #network a
+{
+	padding: 0 8px 0 12px;
+	border-left: 1px solid #ccc;
+}
+.section{
+	border-left: 1px solid #ccc;
+	margin: 12px;
+	padding: 10px;
+}
+.javascript{
+	border: 1px dotted #ccc;
+	margin: 12px;
+	padding: 6px;
+}
+
+
+textarea.disabled{
+	background-color: #dfdfdf;
+}
+
+dl dt.h5{
+	margin: 32px 12px 4px 12px;
+}
+
+ul li.note {
+	font-size: 0.6em;
+	color: #333333;
+}
+
+.hidden{
+	display: none;
+	visibility: hidden;
+}
+.ad
+{
+	padding: 4px 0;
+}

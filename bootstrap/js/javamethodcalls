@@ -1,0 +1,93 @@
+ //console.log(mthdcall);  
+  var wq1=new Array();
+  var wq2=new Array();
+ 
+  //check availability of method calls
+  if(typeof(mthdcall) === 'undefined' || mthdcall == null)
+    {
+      PI.length=0;
+      PRI.length=0;
+      console.log(PI.length+PRI.length+" method calls found");
+    }
+    else if(typeof(mthdcall) !== 'undefined' || mthdcall != null) 
+    {
+            //get the actual name of the method via splicing it
+              var mthcalls=new Array();  
+              //iterate through the items to get the variable name
+              for (cl = 0; cl<mthdcall.length; ++cl)
+               {
+                var call=mthdcall[cl];    
+                var x=call.replace(/(\()((\w+)?)(\))+/,"");
+                var splicedcall=x.replace(/(\.)/,"");
+                var splicedcal2=x.replace(/(\))+/g,"");
+                mthcalls.push(splicedcal2);
+               }  
+               console.log(mthcalls);
+
+             ////////////////////////////////////////////////appearance of a method call within any given method (private|public)////////////////////////////////////////////////////////////////////
+            if(typeof(totalpublicmethods) === 'undefined' || totalpublicmethods == null) 
+            {
+                 PI.length=0;
+                 PRI.length=0;
+            }
+            else if(typeof(totalpublicmethods) !== 'undefined' || totalpublicmethods != null) 
+            { 
+                    var hu=0;
+                   
+                    for(t=0;t<pubmthd.length;++t)
+                    {
+                        for(lq=0;lq<mthcalls.length;++lq)
+                          {    
+                                
+                               var ky=String(pubmthd[t]).match(new RegExp(mthcalls[lq],"g"));
+                                                                                  
+                              if(typeof(ky) === 'undefined' || ky == null) 
+                                  {
+                                       PI.length=hu;                                       
+                                  }
+                               else if(typeof(ky) !== 'undefined' || ky != null)
+                                 {
+                                     wq1.push(ky);
+
+                                     hu+=ky.length;                                     
+                                 }                                                                                                      
+                          }                             
+                    }
+             
+            } 
+            else if(typeof(totalprivatemethods)!=='undefined' || totalprivatemethods !=null)
+            {
+               
+                    var hi=0;
+                    for(t1=0;t1<prmthd.length;++t1)
+                    {
+                       for(lq1=0;lq1<mthcalls.length;++lq1)
+                          {    
+                            
+                               var ky1=String(prmthd[t1]).match(new RegExp(mthcalls[lq1],"g"));
+                               if(typeof(ky1) === 'undefined' || ky1 == null) 
+                                  {
+                                       PRI.length=hi;                                      
+                                  }
+                               else if(typeof(ky1) !== 'undefined' || ky1 != null)
+                                 {
+                                   hi+=ky1.length;
+                                   wq2.push(ky1);                                   
+                                 }                                          
+                          }           
+                    }
+              
+                  /*  if(mthcalls.length>hi)
+                    {
+                      PRI.length=0;
+                      totalprivateoccurrence.length+=PRI.length;
+                    } 
+                    else if(hi>mthcalls.length)
+                    {
+                     pl+=hi-mthcalls.length;
+                     PRI.length=pl;
+                     totalprivateoccurrence.length+=PRI.length;
+                    }   */   
+
+            }
+      }
