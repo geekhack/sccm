@@ -1,6 +1,3 @@
-SCCM
-
-Scoped class cohesion metric.Calculates cohesion for PHP,JavaScript,C++ and Java codes.
 
 Scoped class cohesion metric.Calculates cohesion for PHP,JavaScript,C++ and Java classes.
 
