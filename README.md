@@ -3,7 +3,7 @@ Scoped class cohesion metric.Calculates cohesion for PHP,JavaScript,C++ and Java
 
 The program is written in JavaScript.Currently, the metric can be viewed on the web console.Updates coming soon.
 
-To run: open sccm/index.html 
+To run: open index.html 
 To view different implementation, edit the following:
 on index.html line 120, edit;
 src="bootstrap/js/sccmcpp.js" - For Cplusplus
