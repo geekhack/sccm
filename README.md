@@ -1,5 +1,9 @@
-# sccm
+SCCM
+
 Scoped class cohesion metric.Calculates cohesion for PHP,JavaScript,C++ and Java codes.
+
+Scoped class cohesion metric.Calculates cohesion for PHP,JavaScript,C++ and Java classes.
+
 The program is written in JavaScript.Currently, the metric can be viewed on the web console.Updates coming soon.
 
 To run: open sccm/index.html 
