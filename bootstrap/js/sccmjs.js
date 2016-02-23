@@ -416,19 +416,35 @@ function calculateMetric()
        console.log("*******************local variables class usage******************");
                       console.log(usagelocals.length-totallocalvariables.length);
 
-       console.log("*****************************************************************");
-       var LCOM5=((totaloccurences-(totalattributes*totalmethods))/(totalattributes-(totalattributes*totalmethods)));
-       console.log("**************************************************");
-       
-       console.log("LCOM5 value= "+LCOM5);
-
-       console.log("**************************************************");
+         var LCOM5;
+      console.log("**************************************************");
+              
+      if(totaloccurences==0)
+       {
+        LCOM5=0;
+        console.log("LCOM5 value= "+LCOM5);
+       }
+       else if(totaloccurences>0)
+       {
+        LCOM5=((totaloccurences-(totalattributes*totalmethods))/(totalattributes-(totalattributes*totalmethods)));
+        console.log("LCOM5 value= "+LCOM5);
+       }
+       if(LCOM5>0)
+       {
+        console.log("**************************************************");
        var COH=1-((1-(1/totalattributes))*LCOM5);
        console.log("**************************************************");
        if(COH=1)
        {
-         var COH1=(totaloccurences)/(totalattributes*totalmethods);
-         console.log("COH value= "+COH1);
+        if(totalmethods!=0 && totalattributes!=0)
+         {
+          var COH1=(totaloccurences)/(totalattributes*totalmethods);
+          console.log("COH value= "+COH1);
+         }
+         else if(totalmethods==0 || totalattributes==0)
+         {
+          console.log("COH value= "+0);
+         }
        }
        else
        {
@@ -438,6 +454,13 @@ function calculateMetric()
 
        console.log("**************************************************");
 
+       }  
+       else if(LCOM5==0)
+       {
+         var COH=1;
+         console.log("COH value= "+COH);
+       }    
+      
 
 
         ////////////////////////----------------------------/////////////////////////////////
@@ -448,20 +471,22 @@ function calculateMetric()
         var PC=0;
         var PRC=0;
         var sccm=0;
+        var stndrd=(totaloccurences)/(totalattributes*totalmethods);
+
 
         if(typeof(totalpublicoccurrence.length) === 'undefined' || totalpublicoccurrence.length == null) 
         {
           PC+=0;
           PRC+=totalprivateoccurrence.length/TPRC;
           sccm+=PC+PRC;
-          if(sccm>1){
-            sccm=1;
-            console.log("SCCM value= "+sccm);
+          if(sccm>1)
+          {
+            console.log("SCCM value= "+stndrd);
           }
-          else
+          else if(sccm<1)
           {
             console.log("SCCM value= "+sccm);
-          }          
+          }    
         }
         else if((typeof(totalpublicoccurrence.length) !== 'undefined' || totalpublicoccurrence.length != null) || (typeof(totalprivateoccurrence.length) !== 'undefined' || totalprivateoccurrence.length != null))
         {
@@ -470,28 +495,28 @@ function calculateMetric()
             PRC+=0;
             PC+=totalpublicoccurrence.length/TPC;
             sccm+=PC+PRC;
-            if(sccm>1){
-            sccm=1;
-            console.log("SCCM value= "+sccm);
-          }
-          else
-          {
-            console.log("SCCM value= "+sccm);
-          }     
+            if(sccm>1)
+              {
+                console.log("SCCM value= "+stndrd);
+              }
+              else if(sccm<1)
+              {
+                console.log("SCCM value= "+sccm);
+              }
           }
           else if(totalpublicoccurrence.length==0 && totalprivateoccurrence.length!=0)
           {
             PC+=0;
             PRC+=totalprivateoccurrence.length/TPRC;
             sccm+=PC+PRC;
-           if(sccm>1){
-            sccm=1;
-            console.log("SCCM value= "+sccm);
-          }
-          else
-          {
-            console.log("SCCM value= "+sccm);
-          }     
+           if(sccm>1)
+              {
+                console.log("SCCM value= "+stndrd);
+              }
+              else if(sccm<1)
+              {
+                console.log("SCCM value= "+sccm);
+              }
 
           }
           else if(totalprivateoccurrence.length==0 && totalpublicoccurrence.length==0)
@@ -499,29 +524,28 @@ function calculateMetric()
              PC+=0;
              PRC+=0;
              sccm+=PC+PRC;
-            if(sccm>1){
-            sccm=1;
-            console.log("SCCM value= "+sccm);
-          }
-          else
-          {
-            console.log("SCCM value= "+sccm);
-          }     
+           if(sccm>1)
+            {
+              console.log("SCCM value= "+stndrd);
+            }
+            else if(sccm<1)
+            {
+              console.log("SCCM value= "+sccm);
+            }
           }
           else
           {
             PC+=totalpublicoccurrence.length/TPC;
             PRC+=totalprivateoccurrence.length/TPRC;
             sccm+=PC+PRC;
-            if(sccm>1){
-            
-            sccm=1;
-            console.log("SCCM value= "+sccm);
-          }
-          else
-          {
-            console.log("SCCM value= "+sccm);
-          }     
+            if(sccm>1)
+              {
+                console.log("SCCM value= "+stndrd);
+              }
+              else if(sccm<1)
+              {
+                console.log("SCCM value= "+sccm);
+              }
           }          
          
         }
@@ -532,33 +556,58 @@ function calculateMetric()
             PC+=0;
             PRC+=0;
             sccm+=PC+PRC;
-            if(sccm>1){
-            
-            sccm=1;
-            console.log("SCCM value= "+sccm);
-          }
-          else
-          {
-            console.log("SCCM value= "+sccm);
-          }     
+           if(sccm>1)
+            {
+              console.log("SCCM value= "+stndrd);
+            }
+            else if(sccm<1)
+            {
+              console.log("SCCM value= "+sccm);
+            }
           }
           else
           {
              PRC+=0;
              PC+=totalpublicoccurrence.length/TPC;
              sccm+=PC+PRC;
-             if(sccm>1){
-             sccm=1;
-            console.log("SCCM value= "+sccm);
-          }
-          else
-          {
-            console.log("SCCM value= "+sccm);
-          }     
+             if(sccm>1)
+              {
+                console.log("SCCM value= "+stndrd);
+              }
+              else if(sccm<1)
+              {
+                console.log("SCCM value= "+sccm);
+              }
           }
          
         } 
-         console.log("Public method calls="+mthdcall.length);
-       
+
+       var meanvalue;
+       var lcohesion;
+       var ppy=totallocalvariables.length;
+
+       if(ppy==0)
+       {
+        meanvalue=0;
+
+        console.log("Local Cohesion="+meanvalue);
+       }
+
+       else if(ppy>0 &&(usagelocals.length-totallocalvariables.length)!=0)
+       {
+
+          meanvalue=ppy/(usagelocals.length-totallocalvariables.length);
+          lcohesion=1-meanvalue;
+          console.log("Local Cohesion="+lcohesion);
+          
+        
+       }
+       else if(ppy>0 &&(usagelocals.length-totallocalvariables.length)==0)
+       {
+         meanvalue=0;
+         console.log("Local Cohesion="+meanvalue);          
+        
+       }
+        
   }                        
 

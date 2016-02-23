@@ -246,12 +246,13 @@ function calculateMetric()
   
 
   var prvariable=fctns.match(/(private|protected)\s+(\w+)(\s+(\w+))*(\;)+/g);
-  var prvariable2=fctns.match(/(private|protected)\s+(\w+)\s+(\w+)?(\=)(\W+)(\;)+/g);
+  var prvariable2=fctns.match(/(private|protected)\s+(\w+)\s+(\w+)?(\=)(\w+)(\;)+/g);
   var px=fctns.match(/(private|protected)\s+(\w+)((\s+(\w+)?)*)(((\,)(?!int|byte|short|long|float|double|char|String|boolean)(\w+))+)((\,)?)+/g);
   
   tprivatevs.push(prvariable);
   tprivatevs.push(prvariable2);
   tprivatevs.push(px);
+  
 
    if(tprivatevs!=null)
   {
@@ -818,7 +819,7 @@ function calculateMetric()
                          return tr.indexOf(item)==pos;
                        }); 
 
-        
+         
         }
         
         console.log("Total public occurrence(PO)= "+ptotals);//+pttlarray.length);
@@ -831,19 +832,35 @@ function calculateMetric()
        var totaloccurences=ytt.length+gh.length;
        var totalmethods=PM.length+PRM.length;
        var totalattributes=PA.length+PRA.length;
-
-       var LCOM5=((totaloccurences-(totalattributes*totalmethods))/(totalattributes-(totalattributes*totalmethods)));
-       console.log("**************************************************");
-       
-       console.log("LCOM5 value= "+LCOM5);
-
-       console.log("**************************************************");
+       var LCOM5;
+      console.log("**************************************************");
+              
+      if(totaloccurences==0)
+       {
+        LCOM5=0;
+        console.log("LCOM5 value= "+LCOM5);
+       }
+       else if(totaloccurences>0)
+       {
+        LCOM5=((totaloccurences-(totalattributes*totalmethods))/(totalattributes-(totalattributes*totalmethods)));
+        console.log("LCOM5 value= "+LCOM5);
+       }
+       if(LCOM5>0)
+       {
+        console.log("**************************************************");
        var COH=1-((1-(1/totalattributes))*LCOM5);
        console.log("**************************************************");
        if(COH=1)
        {
-         var COH1=(totaloccurences)/(totalattributes*totalmethods);
-         console.log("COH value= "+COH1);
+         if(totalmethods!=0 && totalattributes!=0)
+         {
+          var COH1=(totaloccurences)/(totalattributes*totalmethods);
+          console.log("COH value= "+COH1);
+         }
+         else if(totalmethods==0 || totalattributes==0)
+         {
+          console.log("COH value= "+0);
+         }
        }
        else
        {
@@ -853,6 +870,14 @@ function calculateMetric()
 
        console.log("**************************************************");
 
+       }  
+       else if(LCOM5==0)
+       {
+         var COH=1;
+         console.log("COH value= "+COH);
+       }    
+      
+       
         //calculating the final metric values
 
         var TPC=(PA.length+PRA.length)*PM.length; //total expected public occurence
@@ -861,13 +886,21 @@ function calculateMetric()
         var PRC=0; //private occurence
         var sccm=0; //sccm metric
 
+        var stndrd=(totaloccurences)/(totalattributes*totalmethods);
 
         if(typeof(totalpublicoccurrence.length) === 'undefined' || totalpublicoccurrence.length == null) 
         {
           PC+=0;
           PRC+=totalprivateoccurrence.length/TPRC;
           sccm=PC+PRC;
-          console.log("SCCM value= "+sccm);
+          if(sccm>1)
+          {
+            console.log("SCCM value= "+stndrd);
+          }
+          else if(sccm<1)
+          {
+            console.log("SCCM value= "+sccm);
+          }
         }
         else if((typeof(totalpublicoccurrence.length) !== 'undefined' || totalpublicoccurrence.length != null) || (typeof(totalprivateoccurrence.length) !== 'undefined' || totalprivateoccurrence.length != null))
         {
@@ -876,14 +909,28 @@ function calculateMetric()
             PRC+=0;
             PC+=totalpublicoccurrence.length/TPC;
             sccm=PC+PRC;
-            console.log("SCCM value= "+sccm);
+            if(sccm>1)
+              {
+                console.log("SCCM value= "+stndrd);
+              }
+              else if(sccm<1)
+              {
+                console.log("SCCM value= "+sccm);
+              }
           }
           else if(totalpublicoccurrence.length==0 && totalprivateoccurrence.length!=0)
           {
             PC+=0;
             PRC+=totalprivateoccurrence.length/TPRC;
             sccm=PC+PRC;
-            console.log("SCCM value= "+sccm);
+            if(sccm>1)
+              {
+                console.log("SCCM value= "+stndrd);
+              }
+              else if(sccm<1)
+              {
+                console.log("SCCM value= "+sccm);
+              }
 
           }
           else if(totalprivateoccurrence.length==0 && totalpublicoccurrence.length==0)
@@ -891,14 +938,28 @@ function calculateMetric()
              PC+=0;
              PRC+=0;
              sccm=PC+PRC;
-             console.log("SCCM value= "+sccm);
+             if(sccm>1)
+              {
+                console.log("SCCM value= "+stndrd);
+              }
+              else if(sccm<1)
+              {
+                console.log("SCCM value= "+sccm);
+              }
           }
           else if(totalprivateoccurrence.length!=0 && totalpublicoccurrence.length!=0)
           {
             PC+=totalpublicoccurrence.length/TPC;
             PRC+=totalprivateoccurrence.length/TPRC;
             sccm=PC+PRC;
-            console.log("SCCM value= "+sccm);
+            if(sccm>1)
+              {
+                console.log("SCCM value= "+stndrd);
+              }
+              else if(sccm<1)
+              {
+                console.log("SCCM value= "+sccm);
+              }
             var COH1=(totaloccurences)/(totalattributes*totalmethods);
             console.log(COH1);
           }          
@@ -911,14 +972,28 @@ function calculateMetric()
             PC+=0;
             PRC+=0;
             sccm=PC+PRC;
-            console.log("SCCM value= "+sccm);
+            if(sccm>1)
+              {
+                console.log("SCCM value= "+stndrd);
+              }
+              else if(sccm<1)
+              {
+                console.log("SCCM value= "+sccm);
+              }
           }
           else
           {
              PRC+=0;
              PC+=totalpublicoccurrence.length/TPC;
              sccm=PC+PRC;
-             console.log("SCCM value= "+sccm);
+             if(sccm>1)
+              {
+                console.log("SCCM value= "+stndrd);
+              }
+              else if(sccm<1)
+              {
+                console.log("SCCM value= "+sccm);
+              }
 
           }
          
@@ -933,7 +1008,8 @@ function calculateMetric()
 
         console.log("PM="+PM.length);
         console.log("PRM="+PRM.length);
-        console.log("Local Variable="+filterlocaltotals.length);
+        var ppy=filterlocaltotals.length;
+        console.log("Local Variable="+ppy);
         console.log("Public method calls="+pttlarray.length);
         console.log("Public method calls="+prttlarray.length);
 
@@ -952,10 +1028,37 @@ function calculateMetric()
 
      
       console.log("LA usage: "+usagelocals.length+usagelocals1.length);
-
-      var COH1=(totaloccurences)/(totalattributes*totalmethods);
-            console.log(COH1);
-
+       //var lcohesion=1/filterlocaltotals.length;
     
+       var meanvalue;
+       var lcohesion;
+       if(ppy==0)
+       {
+        meanvalue=0;
+
+        console.log("Local Cohesion="+meanvalue);
+       }
+       else if(ppy>0 &&(usagelocals.length+usagelocals1.length)!=0)
+       {
+
+          meanvalue=ppy/(usagelocals.length+usagelocals1.length);
+          lcohesion=1-meanvalue;
+          console.log("Local Cohesion="+lcohesion);
+          
+        
+       }
+       else if(ppy>0 &&(usagelocals.length+usagelocals1.length)==0)
+       {
+         meanvalue=0;
+         console.log("Local Cohesion="+meanvalue);          
+        
+       }
+      
+       var COH1=(totaloccurences)/(totalattributes*totalmethods);
+      
+
+
+      
+
                           
 }

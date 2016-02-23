@@ -432,8 +432,7 @@ function calculateMetric()
             localvariableusage.length=0;
           }
 
-          console.log(localvariableusage);
-         
+               
 
 
       //loop through the public methods
@@ -615,8 +614,6 @@ if(prcontent!=null)
           //create a regex to check for any matching local variable
           localpub1=stringPublic1.match(/(int|float|char|string|double|float|bool|void|decltype)\s+(\w+)(\=)+/g);
 
-          console.log(localpub1);
-
           if(localpub1!=null)
           {
 
@@ -648,8 +645,7 @@ if(prcontent!=null)
           {
              localvariableusage1.length
           }
-          console.log(localvariableusage1);
-
+    
       //loop through the private methods
       for(prm=0;prm<prmethodcontent.length;++prm)
       {
@@ -915,7 +911,7 @@ if(prcontent!=null)
                          return finalpublicv.indexOf(item)==pos;
                        }); 
 
-         console.log(filterlocaltotals);       
+         
         }
         
         if(totallocalvariables1!=null)
@@ -926,8 +922,6 @@ if(prcontent!=null)
           filterlocaltotals=finalprivatev.filter(function (item,pos){
                          return finalprivatev.indexOf(item)==pos;
                        }); 
-
-         console.log(filterlocaltotals); 
 
         }
         //combine the two arrays
@@ -944,33 +938,48 @@ if(prcontent!=null)
                          return tr.indexOf(item)==pos;
                        }); 
 
-         console.log(filterlocaltotals);
-        }
         
-        console.log("LA:= "+filterlocaltotals.length);
-
+        }
+        var ppy=filterlocaltotals.length;
+        console.log("Local Variable="+ppy);
+       
 
 
        //calculating the values of COH
        var totaloccurences=ytt.length+gh.length;
        var totalmethods=PM.length+PRM.length;
        var totalattributes=PA.length+PRA.length;
-
-     
-       console.log("*****************************************************************");
-
-       var LCOM5=((totaloccurences-(totalattributes*totalmethods))/(totalattributes-(totalattributes*totalmethods)));
-       console.log("**************************************************");
        
-       console.log("LCOM5 value= "+LCOM5);
-
-       console.log("**************************************************");
+       var LCOM5;
+      console.log("**************************************************");
+              
+      if(totaloccurences==0)
+       {
+        LCOM5=0;
+        console.log("LCOM5 value= "+LCOM5);
+       }
+       else if(totaloccurences>0)
+       {
+        LCOM5=((totaloccurences-(totalattributes*totalmethods))/(totalattributes-(totalattributes*totalmethods)));
+        console.log("LCOM5 value= "+LCOM5);
+       }
+       if(LCOM5>0)
+       {
+        console.log("**************************************************");
        var COH=1-((1-(1/totalattributes))*LCOM5);
        console.log("**************************************************");
        if(COH=1)
        {
-         var COH1=(totaloccurences)/(totalattributes*totalmethods);
-         console.log("COH value= "+COH1);
+         if(totalmethods!=0 && totalattributes!=0)
+         {
+          var COH1=(totaloccurences)/(totalattributes*totalmethods);
+          console.log("COH value= "+COH1);
+         }
+         else if(totalmethods==0 || totalattributes==0)
+         {
+          console.log("COH value= "+0);
+         }
+         
        }
        else
        {
@@ -980,6 +989,15 @@ if(prcontent!=null)
 
        console.log("**************************************************");
 
+       }  
+       else if(LCOM5==0)
+       {
+         var COH=1;
+         console.log("COH value= "+COH);
+       }    
+      
+     
+      
 
 
         ////////////////////////----------------------------/////////////////////////////////
@@ -991,19 +1009,21 @@ if(prcontent!=null)
         var PRC=0;
         var sccm=0;
 
+        var stndrd=(totaloccurences)/(totalattributes*totalmethods);
+
         if(typeof(totalpublicoccurrence.length) === 'undefined' || totalpublicoccurrence.length == null) 
         {
           PC+=0;
           PRC+=totalprivateoccurrence.length/TPRC;
           sccm+=PC+PRC;
-          if(sccm>1){
-            sccm=1;
-            console.log("SCCM value= "+sccm);
+          if(sccm>1)
+          {
+            console.log("SCCM value= "+stndrd);
           }
-          else
+          else if(sccm<1)
           {
             console.log("SCCM value= "+sccm);
-          }          
+          }  
         }
         else if((typeof(totalpublicoccurrence.length) !== 'undefined' || totalpublicoccurrence.length != null) || (typeof(totalprivateoccurrence.length) !== 'undefined' || totalprivateoccurrence.length != null))
         {
@@ -1012,58 +1032,66 @@ if(prcontent!=null)
             PRC+=0;
             PC+=totalpublicoccurrence.length/TPC;
             sccm+=PC+PRC;
-            if(sccm>1){
-            sccm=1;
-            console.log("SCCM value= "+sccm);
-          }
-          else
-          {
-            console.log("SCCM value= "+sccm);
-          }     
+           if(sccm>1)
+            {
+              console.log("SCCM value= "+stndrd);
+            }
+            else if(sccm<1)
+            {
+              console.log("SCCM value= "+sccm);
+            }     
           }
           else if(totalpublicoccurrence.length==0 && totalprivateoccurrence.length!=0)
           {
             PC+=0;
             PRC+=totalprivateoccurrence.length/TPRC;
             sccm+=PC+PRC;
-           if(sccm>1){
-            sccm=1;
-            console.log("SCCM value= "+sccm);
-          }
-          else
-          {
-            console.log("SCCM value= "+sccm);
-          }     
-
+           if(sccm>1)
+            {
+              console.log("SCCM value= "+stndrd);
+            }
+            else if(sccm<1)
+            {
+              console.log("SCCM value= "+sccm);
+            }
           }
           else if(totalprivateoccurrence.length==0 && totalpublicoccurrence.length==0)
           {
              PC+=0;
              PRC+=0;
              sccm+=PC+PRC;
-            if(sccm>1){
-            sccm=1;
-            console.log("SCCM value= "+sccm);
-          }
-          else
-          {
-            console.log("SCCM value= "+sccm);
-          }     
+           if(sccm>1)
+            {
+              console.log("SCCM value= "+stndrd);
+            }
+            else if(sccm<1)
+            {
+              console.log("SCCM value= "+sccm);
+            }
           }
           else
           {
             PC+=totalpublicoccurrence.length/TPC;
             PRC+=totalprivateoccurrence.length/TPRC;
             sccm+=PC+PRC;
-            if(sccm>1){
-            
-            sccm=1;
-            console.log("SCCM value= "+sccm);
-          }
-          else
-          {
-            console.log("SCCM value= "+sccm);
-          }     
+            if(sccm>1)
+              {
+                 if(totalmethods!=0 && totalattributes!=0)
+                  {
+                    stndrd=(totaloccurences)/(totalattributes*totalmethods);
+                    console.log("SCCM value= "+stndrd);
+                  }
+                  else if(totalmethods==0 || totalattributes==0)
+                  {
+                    stndrd=0;
+                    console.log("SCCM value= "+stndrd);
+                  }
+                
+              }
+              else if(sccm<1)
+              {
+                console.log("SCCM value= "+sccm);
+              }
           }          
          
         }
@@ -1074,35 +1102,98 @@ if(prcontent!=null)
             PC+=0;
             PRC+=0;
             sccm+=PC+PRC;
-            if(sccm>1){
-            
-            sccm=1;
-            console.log("SCCM value= "+sccm);
-          }
-          else
-          {
-            console.log("SCCM value= "+sccm);
-          }     
+            if(sccm>1)
+              {
+                console.log("SCCM value= "+stndrd);
+              }
+              else if(sccm<1)
+              {
+                console.log("SCCM value= "+sccm);
+              }
           }
           else
           {
              PRC+=0;
              PC+=totalpublicoccurrence.length/TPC;
              sccm+=PC+PRC;
-             if(sccm>1){
-             sccm=1;
-            console.log("SCCM value= "+sccm);
-          }
-          else
-          {
-            console.log("SCCM value= "+sccm);
-          }     
+             if(sccm>1)
+              {
+                console.log("SCCM value= "+stndrd);
+              }
+              else if(sccm<1)
+              {
+                console.log("SCCM value= "+sccm);
+              }
           }
          
-        }   
-        console.log("LA usage: "+usagelocals.length);
-   
-        console.log("LA usage: "+usagelocals1.length);
+        }
+       var meanvalue;
+       var lcohesion;
+       if(ppy==0)
+       {
+        meanvalue=0;
+
+        console.log("Local Cohesion="+meanvalue);
+       }  
+       else if(usagelocals!==null && usagelocals1==null)
+        {
+           console.log("LA usage: "+usagelocals.length);
+
+           if(ppy>0&&(usagelocals.length)!=0)
+             {
+                meanvalue=ppy/(usagelocals.length);
+                lcohesion=1-meanvalue;
+                console.log("Local Cohesion="+lcohesion);                
+              
+             }
+             else if(ppy>0 &&(usagelocals.length)==0)
+             {
+               meanvalue=0;
+               console.log("Local Cohesion="+meanvalue);          
+              
+             }           
+         
+        } 
+        else if(usagelocals1!==null)
+        {
+           console.log("LA usage: "+usagelocals1.length);
+
+           if(ppy>0 &&(usagelocals1.length)!=0)
+             {
+                meanvalue=ppy/(usagelocals1.length);
+                lcohesion=1-meanvalue;
+                console.log("Local Cohesion="+lcohesion);                
+              
+             }
+             else if(ppy>0 &&(usagelocals1.length)==0)
+             {
+               meanvalue=0;
+               console.log("Local Cohesion="+meanvalue);          
+              
+             }        
+        }
+        else if(usagelocals!==null&&usagelocals1!==null)
+        {
+          console.log("LA usage: "+usagelocals.length+usagelocals1.length);
+
+          if(ppy>0 &&(usagelocals.length+usagelocals1.length)!=0)
+           {
+
+              meanvalue=ppy/(usagelocals.length+usagelocals1.length);
+              lcohesion=1-meanvalue;
+              console.log("Local Cohesion="+lcohesion);              
+            
+           }
+           else if(ppy>0 &&(usagelocals.length+usagelocals1.length)==0)
+           {
+             meanvalue=0;
+             console.log("Local Cohesion="+meanvalue);          
+            
+           }
+          
+      
+        }     
+        
    
   }                        
 
