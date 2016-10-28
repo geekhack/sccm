@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>SCCM</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="bootstrap/js/my.js"></script>
+    <script src="bootstrap/js/base2-load.js" type="text/javascript"></script>
+    <script src="bootstrap/js/Packer.js" type="text/javascript"></script>
+    <script src="bootstrap/js/Words.js" type="text/javascript"></script>
+    <script src="bootstrap/js/bindings.js" type="text/javascript"></script>
+    <script src="bootstrap/js/alertify.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/alertify.core.css" />
+    <!-- include a theme, can be included into the core instead of 2 separate files -->
+     <link rel="stylesheet" href="bootstrap/css/alertify.bootstrap.css" />
+      <link rel="stylesheet" href="bootstrap/css/alertify.default.css" />
+  <script type="text/javascript" src="bootstrap/js/jquery.min.js"></script>
+  </head>
+  <body>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">SCC Metric</a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+        <li class=""><a href="#">Documentation <span class="sr-only"></span></a></li>
+      </ul>     
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Help</a></li>
+      </ul>
+       <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Download v1</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<style type="text/css">
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+</style>
+  
+<div class="fileUpload btn btn-primary" style="margin-left:2%">
+    <span>Select File For Upload Here</span>
+    <input type="file" class="upload" id="fileinput"/>
+</div> 
+<div>
+<div id="one" style="float: left;width:40%;margin-left:2%">
+           <form name="aspnetForm" method="post" action="metricmeasure.html" id="aspnetForm">
+            <div>
+              <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+              <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+              <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="">
+            </div>
+
+              <textarea id="input" name="input" rows="12" cols="80" spellcheck="false"></textarea></p>
+              <p class="r" id="controls">
+                <label for="base62"><!--Base62 encode -->
+                <input type="hidden"  id="base62" name="base62" value="1"></label>
+                <label for="shrink"><!--Shrink variables -->
+                <input type="hidden" id="shrink" name="shrink" value="1"></label>
+              </p>
+
+</div>
+            <div id="three" style="float: left;width:2%;margin-top:5%;margin-left:4%">
+              <button type="button"  class="btn btn-success" id="pack-script">Compress</button>
+              
+            </div>
+<div id="two" style="float: right;width:45%;margin-right:2%">
+             
+                 <textarea id="output" name="output" rows="12" cols="80" readonly="readonly" spellcheck="false"></textarea>
+              </p>  
+              <p class="form-buttons" id="output-buttons">
+              </p>
+             <fieldset class="hidden">
+                 <input type="hidden" name="command" value="">
+                 <input type="hidden" name="filename" value="">
+
+                 <input type="hidden" name="filetype" value="">
+             
+                 <button type="submit" id="saveScript" disabled="disabled">Save</button>
+                 <input type="file" id="uploadScript" name="upload" disabled="true">
+                 <button type="button" id="loadScript">Load</button>
+             </fieldset>
+           </form> 
+</div>
+</div> 
+</div>
+            <div style="margin-top:20%">
+              <button type="button"  class="btn btn-primary" id="clc" onClick="calculateMetric();">Calculate Metric</button>
+            </div> 
+</body>
+<script type="text/javascript" src="bootstrap/js/sccmphp.js"></script>
+
+<script type="text/javascript">
+  document.getElementById('fileinput').addEventListener('change', readSingleFile, false);
+  //doc
+
+</script>
+<footer>
+
+<P></P>
+
+
+</footer>
+</html>
