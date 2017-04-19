@@ -11,4 +11,3 @@ src="bootstrap/js/sccm.js" - For Java
 src="bootstrap/js/sccmphp.js" - For PHP
 src="bootstrap/js/sccmjs.js"- For Javascript.
 
-However, one file implementation will be posted soon!
